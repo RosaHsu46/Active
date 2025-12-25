@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import UserEntry from './components/UserEntry';
 import DateSelector from './components/DateSelector';
 import Results from './components/Results';
+import './index.css';
+import './App.css';
 import AdminPanel from './components/AdminPanel';
 
 function App() {
