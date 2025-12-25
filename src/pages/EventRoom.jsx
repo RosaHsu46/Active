@@ -87,7 +87,9 @@ export default function EventRoom() {
         }
         console.log("User joining:", name);
         try {
-            setCurrentUser(name);
+            console.log("Inside try block");
+            // setCurrentUser(name);
+            console.log("Skipped setCurrentUser");
             console.log("allVotes type:", typeof allVotes, "Is Array:", Array.isArray(allVotes), "Length:", allVotes?.length);
 
             // Check if user already voted
