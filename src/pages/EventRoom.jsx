@@ -7,7 +7,8 @@ import DateSelector from '../components/DateSelector';
 import Results from '../components/Results';
 
 export default function EventRoom() {
-    const { eventId } = useParams();
+    const { eventId: rawEventId } = useParams();
+    const eventId = rawEventId ? rawEventId.trim() : '';
     const navigate = useNavigate();
 
     const [eventData, setEventData] = useState(null);
@@ -43,9 +44,10 @@ export default function EventRoom() {
                     }
                 }
                 console.error(`Event ${eventId} not found.`);
-                alert(`找不到此活動 (ID: ${eventId})`);
-                navigate('/');
+                // Don't alert/navigate immediately, let the UI handle null eventData
+                setLoading(false);
             }
+        }, (error) => {
         }, (error) => {
             console.error("Error fetching event:", error);
             alert("讀取活動發生錯誤");
@@ -131,7 +133,28 @@ export default function EventRoom() {
     };
 
     if (loading) return <div className="loading">載入中...</div>;
-    if (!eventData) return <div className="loading">找不到活動資料</div>;
+
+    if (!eventData) return (
+        <div className="app-container" style={{ textAlign: 'center', marginTop: '4rem' }}>
+            <h2>⚠️ 找不到活動</h2>
+            <p>ID: {eventId}</p>
+            <p>這個活動可能已經被取消或不存在。</p>
+            <button
+                onClick={() => navigate('/hall')}
+                style={{
+                    padding: '0.8rem 1.5rem',
+                    background: '#556b2f',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    marginTop: '1rem',
+                    cursor: 'pointer'
+                }}
+            >
+                返回活動大廳
+            </button>
+        </div>
+    );
 
     return (
         <div className="app-container">

@@ -95,6 +95,7 @@ export default function EventHall() {
                             <h3>{event.name}</h3>
                             <div className="event-info">
                                 <p>📅 {event.year}年 {event.month}月</p>
+                                <p style={{ fontSize: '0.8rem', color: '#999' }}>ID: {event.id}</p>
                                 {event.deadline && (
                                     <p>⏰ 截止: {new Date(event.deadline).toLocaleDateString()}</p>
                                 )}
