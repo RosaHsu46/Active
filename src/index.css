@@ -1,20 +1,28 @@
 :root {
   /* Earth Tone Palette */
-  --color-bg: #F4F1EA; /* Warm Beige */
-  --color-surface: #FFFFFF; /* White */
-  --color-primary: #556B2F; /* Dark Olive Green */
-  --color-primary-hover: #6B8E23; /* Olive Drab */
-  --color-accent: #A0522D; /* Sienna */
-  --color-text: #2F3E46; /* Dark Slate */
-  --color-text-muted: #526D7A; /* Muted Blue-Grey */
-  --color-border: #D7CCC8; /* Light Brownish Grey */
-  
+  --color-bg: #F4F1EA;
+  /* Warm Beige */
+  --color-surface: #FFFFFF;
+  /* White */
+  --color-primary: #556B2F;
+  /* Dark Olive Green */
+  --color-primary-hover: #6B8E23;
+  /* Olive Drab */
+  --color-accent: #A0522D;
+  /* Sienna */
+  --color-text: #2F3E46;
+  /* Dark Slate */
+  --color-text-muted: #526D7A;
+  /* Muted Blue-Grey */
+  --color-border: #D7CCC8;
+  /* Light Brownish Grey */
+
   --font-main: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
-  
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
@@ -50,7 +58,9 @@ button {
   transition: all 0.2s ease;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--color-primary);
@@ -70,4 +80,14 @@ input {
 
 input:focus {
   border-color: var(--color-primary);
+}
+
+.loading {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-weight: bold;
 }

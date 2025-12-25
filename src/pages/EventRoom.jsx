@@ -40,10 +40,13 @@ export default function EventRoom() {
                         }
                     }
                 }
-            } else {
                 alert("找不到此活動");
                 navigate('/');
             }
+        }, (error) => {
+            console.error("Error fetching event:", error);
+            alert("讀取活動發生錯誤");
+            setLoading(false);
         });
         return () => unsub();
     }, [eventId, navigate, view]);
@@ -55,6 +58,9 @@ export default function EventRoom() {
         const unsub = onSnapshot(votesRef, (snapshot) => {
             const votes = snapshot.docs.map(doc => doc.data());
             setAllVotes(votes);
+            setLoading(false);
+        }, (error) => {
+            console.error("Error fetching votes:", error);
             setLoading(false);
         });
         return () => unsub();
@@ -121,7 +127,8 @@ export default function EventRoom() {
         });
     };
 
-    if (loading || !eventData) return <div className="loading">載入中...</div>;
+    if (loading) return <div className="loading">載入中...</div>;
+    if (!eventData) return <div className="loading">找不到活動資料</div>;
 
     return (
         <div className="app-container">
