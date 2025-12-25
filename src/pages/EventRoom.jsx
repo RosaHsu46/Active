@@ -12,9 +12,9 @@ export default function EventRoom() {
     const navigate = useNavigate();
 
     const [eventData, setEventData] = useState(null);
-    const [allVotes, setAllVotes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isExpired, setIsExpired] = useState(false);
+    const [availableIds, setAvailableIds] = useState([]); // Store IDs if not found
 
     // App state
     const [view, setView] = useState('entry'); // entry, select, summary, results
@@ -43,11 +43,18 @@ export default function EventRoom() {
                         }
                     }
                 }
+                setLoading(false);
+            } else {
                 console.error(`Event ${eventId} not found.`);
-                // Don't alert/navigate immediately, let the UI handle null eventData
+
+                // Fetch all available IDs to show to the user
+                getDocs(collection(db, 'events')).then(snap => {
+                    const ids = snap.docs.map(d => d.id);
+                    setAvailableIds(ids);
+                });
+
                 setLoading(false);
             }
-        }, (error) => {
         }, (error) => {
             console.error("Error fetching event:", error);
             alert("讀取活動發生錯誤");
@@ -137,8 +144,35 @@ export default function EventRoom() {
     if (!eventData) return (
         <div className="app-container" style={{ textAlign: 'center', marginTop: '4rem' }}>
             <h2>⚠️ 找不到活動</h2>
-            <p>ID: {eventId}</p>
-            <p>這個活動可能已經被取消或不存在。</p>
+            <p>您搜尋的 ID: <span style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>{eventId}</span></p>
+
+            <div style={{ margin: '2rem 0', padding: '1rem', background: '#fff', borderRadius: '8px', border: '1px solid #eee' }}>
+                <p style={{ marginBottom: '0.5rem', color: '#666' }}>在此系統中找到的活動 ID:</p>
+                {availableIds.length > 0 ? (
+                    <ul style={{ listStyle: 'none', padding: 0 }}>
+                        {availableIds.map(id => (
+                            <li key={id} style={{ margin: '0.5rem 0' }}>
+                                <button
+                                    onClick={() => window.location.href = `/event/${id}`}
+                                    style={{
+                                        color: '#3498db',
+                                        background: 'none',
+                                        border: '1px solid #3498db',
+                                        padding: '0.3rem 0.8rem',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    {id}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>沒有發現任何活動。</p>
+                )}
+            </div>
+
             <button
                 onClick={() => navigate('/hall')}
                 style={{
