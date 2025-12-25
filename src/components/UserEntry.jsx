@@ -6,8 +6,12 @@ export default function UserEntry({ onJoin, eventName, isExpired, onViewResults,
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("UserEntry: handleSubmit triggered with name:", name);
     if (name.trim()) {
+      console.log("UserEntry: Calling onJoin...");
       onJoin(name.trim());
+    } else {
+      console.log("UserEntry: Name is empty");
     }
   };
 
