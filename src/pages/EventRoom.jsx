@@ -12,6 +12,7 @@ export default function EventRoom() {
     const navigate = useNavigate();
 
     const [eventData, setEventData] = useState(null);
+    const [allVotes, setAllVotes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isExpired, setIsExpired] = useState(false);
     const [availableIds, setAvailableIds] = useState([]); // Store IDs if not found
@@ -87,9 +88,7 @@ export default function EventRoom() {
         }
         console.log("User joining:", name);
         try {
-            console.log("Inside try block");
-            // setCurrentUser(name);
-            console.log("Skipped setCurrentUser");
+            setCurrentUser(name);
             console.log("allVotes type:", typeof allVotes, "Is Array:", Array.isArray(allVotes), "Length:", allVotes?.length);
 
             // Check if user already voted
