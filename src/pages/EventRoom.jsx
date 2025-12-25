@@ -86,19 +86,28 @@ export default function EventRoom() {
             return;
         }
         console.log("User joining:", name);
-        setCurrentUser(name);
+        try {
+            setCurrentUser(name);
+            console.log("allVotes type:", typeof allVotes, "Is Array:", Array.isArray(allVotes), "Length:", allVotes?.length);
 
-        // Check if user already voted
-        const existingVote = allVotes.find(v => v.name === name);
-        if (existingVote) {
-            alert(`歡迎回來，${name}！已載入您之前的選擇。`);
-            setSelectedDates(existingVote.dates || []);
-        } else {
-            setSelectedDates([]);
+            // Check if user already voted
+            const existingVote = allVotes && Array.isArray(allVotes) ? allVotes.find(v => v.name === name) : null;
+
+            if (existingVote) {
+                console.log("Found existing vote for", name);
+                alert(`歡迎回來，${name}！已載入您之前的選擇。`);
+                setSelectedDates(existingVote.dates || []);
+            } else {
+                console.log("No existing vote, new user");
+                setSelectedDates([]);
+            }
+
+            console.log("Setting view to 'select'. Current view:", view);
+            setView('select');
+        } catch (err) {
+            console.error("Error in handleJoin:", err);
+            alert("加入活動時發生錯誤，請查看 Console");
         }
-
-        console.log("Setting view to 'select'");
-        setView('select');
     };
 
     const handleToggleDate = (date) => {
