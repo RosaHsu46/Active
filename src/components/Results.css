@@ -37,7 +37,7 @@
     grid-template-columns: 60px 1fr;
     gap: 1rem;
     align-items: center;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.03);
     padding: 1rem;
     border-radius: var(--radius-md);
 }
@@ -103,14 +103,6 @@
 }
 
 .no-votes {
-    text-align: center;
-    color: var(--color-text-muted);
-    padding: 2rem;
-}
-
-.reset-btn {
-    background: transparent;
-
     .results-container {
         background: var(--color-surface);
         padding: 2rem;
@@ -150,7 +142,7 @@
         grid-template-columns: 60px 1fr;
         gap: 1rem;
         align-items: center;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(0, 0, 0, 0.03);
         padding: 1rem;
         border-radius: var(--radius-md);
     }

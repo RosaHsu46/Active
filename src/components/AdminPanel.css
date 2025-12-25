@@ -72,7 +72,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.03);
     margin-bottom: 0.5rem;
     border-radius: var(--radius-md);
 }
