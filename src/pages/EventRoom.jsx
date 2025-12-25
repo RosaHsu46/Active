@@ -23,6 +23,8 @@ export default function EventRoom() {
     // 1. Listen to Event Details
     useEffect(() => {
         if (!eventId) return;
+        console.log(`[EventRoom] Fetching event with ID: "${eventId}" (Type: ${typeof eventId}, Length: ${eventId.length})`);
+
         const unsub = onSnapshot(doc(db, 'events', eventId), (docSnap) => {
             if (docSnap.exists()) {
                 const data = docSnap.data();
