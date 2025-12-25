@@ -1,19 +1,19 @@
 :root {
-  /* Premium Palette */
-  --color-bg: #1a1a1a;
-  --color-surface: #2a2a2a;
-  --color-primary: #d4af37; /* Gold */
-  --color-primary-hover: #f4cf57;
-  --color-accent: #c0392b; /* Deep Red */
-  --color-text: #f0f0f0;
-  --color-text-muted: #a0a0a0;
-  --color-border: #444;
+  /* Earth Tone Palette */
+  --color-bg: #F4F1EA; /* Warm Beige */
+  --color-surface: #FFFFFF; /* White */
+  --color-primary: #556B2F; /* Dark Olive Green */
+  --color-primary-hover: #6B8E23; /* Olive Drab */
+  --color-accent: #A0522D; /* Sienna */
+  --color-text: #2F3E46; /* Dark Slate */
+  --color-text-muted: #526D7A; /* Muted Blue-Grey */
+  --color-border: #D7CCC8; /* Light Brownish Grey */
   
   --font-main: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.3);
-  --shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
   
   --radius-sm: 4px;
   --radius-md: 8px;
