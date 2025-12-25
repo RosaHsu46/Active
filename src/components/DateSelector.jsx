@@ -1,11 +1,15 @@
 import React from 'react';
 import './DateSelector.css';
 
-export default function DateSelector({ selectedDates, onToggleDate, onConfirm }) {
-    // January 2026
-    // Jan 1, 2026 is a Thursday.
-    const daysInMonth = 31;
-    const startDay = 4; // 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
+export default function DateSelector({ selectedDates, onToggleDate, onConfirm, year = 2026, month = 1 }) {
+    const date = new Date(year, month - 1, 1);
+    const daysInMonth = new Date(year, month, 0).getDate();
+    const startDay = date.getDay(); // 0=Sun, 1=Mon, ...
+
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
     const days = [];
     // Fill empty slots for previous month
@@ -17,14 +21,12 @@ export default function DateSelector({ selectedDates, onToggleDate, onConfirm })
         days.push(i);
     }
 
-    const isSelected = (day) => selectedDates.includes(day);
-
     return (
         <div className="date-selector-container">
             <h2 className="section-title">選擇你有空的日期</h2>
             <div className="calendar-header">
-                <span>2026</span>
-                <span className="month-name">January</span>
+                <span>{year}</span>
+                <span className="month-name">{monthNames[month - 1]}</span>
             </div>
 
             <div className="calendar-grid">

@@ -1,0 +1,58 @@
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.landing-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.landing-options {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.option-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.host-card:hover {
+    border-color: #3498db;
+}
+
+.hall-card:hover {
+    border-color: #2ecc71;
+}
+
+.option-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #34495e;
+}
+
+.option-card p {
+    color: #7f8c8d;
+    line-height: 1.5;
+}

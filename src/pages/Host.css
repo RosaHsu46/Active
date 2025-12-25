@@ -1,0 +1,96 @@
+.host-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.host-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.host-title {
+    flex-grow: 1;
+    text-align: center;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.host-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .host-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.host-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.host-card h2 {
+    margin-top: 0;
+    color: #34495e;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.create-btn,
+.manage-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.create-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.create-btn:hover {
+    background-color: #2980b9;
+}
+
+.manage-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.manage-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.manage-desc {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}

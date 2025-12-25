@@ -32,22 +32,26 @@
     gap: 1rem;
 }
 
-.join-btn {
+.start-btn {
     background: var(--color-primary);
     color: var(--color-bg);
-    padding: 0.8rem;
+    padding: 1rem 2rem;
     border-radius: var(--radius-md);
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.join-btn:hover:not(:disabled) {
+.start-btn:hover:not(:disabled) {
     background: var(--color-primary-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
-.join-btn:disabled {
+.start-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
