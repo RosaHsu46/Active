@@ -61,7 +61,9 @@ export default function EventRoom() {
             setLoading(false);
         });
         return () => unsub();
-    }, [eventId, navigate, view]);
+        return () => unsub();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [eventId, navigate]); // Removed view to prevent re-subscription loop
 
     // 2. Listen to Votes Subcollection
     useEffect(() => {
@@ -83,7 +85,9 @@ export default function EventRoom() {
             alert("投票已截止");
             return;
         }
+        console.log("User joining:", name);
         setCurrentUser(name);
+
         // Check if user already voted
         const existingVote = allVotes.find(v => v.name === name);
         if (existingVote) {
@@ -92,6 +96,8 @@ export default function EventRoom() {
         } else {
             setSelectedDates([]);
         }
+
+        console.log("Setting view to 'select'");
         setView('select');
     };
 
