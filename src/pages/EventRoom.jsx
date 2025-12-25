@@ -40,7 +40,8 @@ export default function EventRoom() {
                         }
                     }
                 }
-                alert("找不到此活動");
+                console.error(`Event ${eventId} not found.`);
+                alert(`找不到此活動 (ID: ${eventId})`);
                 navigate('/');
             }
         }, (error) => {
