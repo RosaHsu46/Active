@@ -13,7 +13,15 @@ export default function Results({ allVotes, onReset, onAdminClick }) {
     // Sort dates by popularity
     const sortedDates = Object.entries(voteCounts)
         .sort(([, countA], [, countB]) => countB - countA)
-        .map(([date, count]) => ({ date: parseInt(date), count }));
+        .map(([key, count]) => {
+            const [day, type] = key.split('-');
+            return {
+                key,
+                day: parseInt(day),
+                type: type === 'lunch' ? '午餐' : '晚餐',
+                count
+            };
+        });
 
     const maxVotes = sortedDates.length > 0 ? sortedDates[0].count : 0;
 
@@ -25,11 +33,12 @@ export default function Results({ allVotes, onReset, onAdminClick }) {
                 {sortedDates.length === 0 ? (
                     <p className="no-votes">目前還沒有人投票喔！</p>
                 ) : (
-                    sortedDates.map(({ date, count }) => (
-                        <div key={date} className="stat-item">
+                    sortedDates.map(({ key, day, type, count }) => (
+                        <div key={key} className="stat-item">
                             <div className="stat-date">
                                 <span className="month">Jan</span>
-                                <span className="day">{date}</span>
+                                <span className="day">{day}</span>
+                                <span className="type" style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{type}</span>
                             </div>
                             <div className="stat-bar-container">
                                 <div
@@ -40,7 +49,7 @@ export default function Results({ allVotes, onReset, onAdminClick }) {
                                 </div>
                             </div>
                             <div className="stat-voters">
-                                {allVotes.filter(v => v.dates.includes(date)).map(v => v.name).join(', ')}
+                                {allVotes.filter(v => v.dates.includes(key)).map(v => v.name).join(', ')}
                             </div>
                         </div>
                     ))

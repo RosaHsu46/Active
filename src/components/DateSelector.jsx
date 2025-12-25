@@ -36,15 +36,34 @@ export default function DateSelector({ selectedDates, onToggleDate, onConfirm })
                 <div className="day-label">Fri</div>
                 <div className="day-label">Sat</div>
 
-                {days.map((day, index) => (
-                    <div
-                        key={index}
-                        className={`calendar-day ${day ? 'active-day' : 'empty-day'} ${day && isSelected(day) ? 'selected' : ''}`}
-                        onClick={() => day && onToggleDate(day)}
-                    >
-                        {day}
-                    </div>
-                ))}
+                {days.map((day, index) => {
+                    if (!day) return <div key={index} className="empty-day"></div>;
+
+                    const lunchKey = `${day}-lunch`;
+                    const dinnerKey = `${day}-dinner`;
+                    const isLunchSelected = selectedDates.includes(lunchKey);
+                    const isDinnerSelected = selectedDates.includes(dinnerKey);
+
+                    return (
+                        <div key={index} className="calendar-day-container">
+                            <div className="day-number">{day}</div>
+                            <div className="day-options">
+                                <button
+                                    className={`time-slot ${isLunchSelected ? 'selected' : ''}`}
+                                    onClick={() => onToggleDate(lunchKey)}
+                                >
+                                    午
+                                </button>
+                                <button
+                                    className={`time-slot ${isDinnerSelected ? 'selected' : ''}`}
+                                    onClick={() => onToggleDate(dinnerKey)}
+                                >
+                                    晚
+                                </button>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
 
             <div className="actions">

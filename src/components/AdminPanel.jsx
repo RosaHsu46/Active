@@ -55,7 +55,10 @@ export default function AdminPanel({ allVotes, onDeleteVote, onClearAll, onBack 
                             <div className="vote-info">
                                 <span className="voter-name">{vote.name}</span>
                                 <span className="vote-dates">
-                                    {vote.dates.length} 個日期: {vote.dates.join(', ')}
+                                    {vote.dates.map(d => {
+                                        const [day, type] = d.split('-');
+                                        return `${day}日(${type === 'lunch' ? '午' : '晚'})`;
+                                    }).join(', ')}
                                 </span>
                             </div>
                             <button
