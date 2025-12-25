@@ -13,7 +13,7 @@ export default function UserEntry({ onJoin }) {
 
   return (
     <div className="user-entry-container">
-      <h1 className="title">屬於我們的年度尾牙</h1>
+      <h1 className="title">揮別2025尾牙</h1>
       <p className="subtitle">請輸入你的名字以開始投票</p>
       <form onSubmit={handleSubmit} className="entry-form">
         <input
